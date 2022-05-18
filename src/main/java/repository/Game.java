@@ -5,7 +5,7 @@ import ru.netology.domain.Player;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Game extends Player {
+public class Game {
     private Collection<Player> tourney = new ArrayList<>();
 
     public Collection<Player> findAll() {
@@ -16,7 +16,7 @@ public class Game extends Player {
         this.tourney.add(player);
     }
 
-    public void saveAll(Collection<? extends Player> tourney) {
+    public void saveAll(Collection<Player> tourney) {
         this.tourney.addAll(tourney);
     }
 
@@ -27,6 +27,15 @@ public class Game extends Player {
             }
         }
         return null;
+    }
+
+    public Player findById(int id) {
+        for (Player player : tourney) {
+            if (player.getId() == id) {
+                return player;
+            }
+        }
+        throw new NotRegisteredException("Игрок под номером " + id + " не зарегестрирован");
     }
 
     public int round(String playerName1, String playerName2) {

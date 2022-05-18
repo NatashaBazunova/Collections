@@ -63,6 +63,22 @@ class GameTest {
     public void shouldBeBothPlayersNotRegistered() {
         assertThrows(NotRegisteredException.class, () -> game.round("Vasya", "Kolya"));
     }
+    @Test
+    public  void shouldFindId5() {
+        assertEquals(player5, game.findById(5));
+    }
+    @Test
+    public void shouldNotFindById() {
+        assertThrows(NotRegisteredException.class, () -> game.findById(6));
+    }
+
+    @Test
+    public void shouldSaveAll() {
+        Collection<Player> tourney = new ArrayList<>();
+        game.saveAll(tourney);
+        Collection<Player> pls = game.findAll();
+        assertEquals(5, pls.size());
+    }
 
 
 }
