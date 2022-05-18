@@ -43,8 +43,7 @@ public class Game extends Player {
         }
         if (player1.getStrength() < player2.getStrength()) {
             return 2;
-        }
-        else  {
+        } else {
             return 0;
         }
     }

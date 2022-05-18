@@ -20,7 +20,7 @@ class GameTest {
     Player player5 = new Player(5, "Ann", 20);
 
     @BeforeEach
-    public void shouldRegieter() {
+    public void shouldRegister() {
         game.register(player1);
         game.register(player2);
         game.register(player3);
@@ -28,37 +28,12 @@ class GameTest {
         game.register(player5);
     }
 
-
-
-//    @Test
-//    public void shouldSaveAll() {
-//        Collection<Player> tourney = new ArrayList<>();
-//        tourney.add(player1);
-//        tourney.add(player2);
-//        tourney.add(player3);
-//        tourney.add(player4);
-//        game.saveAll(tourney);
-//        Collection<Player> players = game.findAll();
-//
-//        assertEquals(4, players.size());
-//    }
-
     @Test
     public void shouldFindByNameAlex() {
-       assertEquals(player3, game.findByName("Alex"));
+        assertEquals(player3, game.findByName("Alex"));
 
     }
-//    @Test
-//    public void shouldFinAll() {
-//        game.register(player1);
-//        game.register(player2);
-//        game.register(player3);
-//        game.register(player4);
-//        game.register(player5);
-//
-//        Collection<Player> expected = new Collection<Player>(player1, player2, player3, player4, player5) {};
-//
-//        assertArrayEquals(expected, game.findAll());
+
     @Test
     public void shouldPlayer1Win() {
         assertEquals(1, game.round("Ivan", "Nata"));
@@ -84,8 +59,10 @@ class GameTest {
         assertThrows(NotRegisteredException.class, () -> game.round("Ann", "Olesya"));
     }
 
-
-
+    @Test
+    public void shouldBeBothPlayersNotRegistered() {
+        assertThrows(NotRegisteredException.class, () -> game.round("Vasya", "Kolya"));
+    }
 
 
 }
